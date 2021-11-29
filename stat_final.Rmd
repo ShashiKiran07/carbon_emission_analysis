@@ -1,0 +1,36 @@
+---
+title: "Stat 5000 - Final Project"
+author: "Shashi"
+date: "11/26/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r}
+library(tidyverse)
+```
+
+```{r}
+emissions_pre <- read_csv("data/CO2_Emissions_1960-2018.csv")
+```
+```{r}
+emissions <- as_tibble(emissions_pre)
+
+```
+```{r}
+head(emissions)
+
+```
+
+```{r}
+emissions <- emissions[-1,] %>%
+  pivot_longer(cols = -c(`Country Name`),names_to = "Year", values_to = "Emissions")
+head(emissions)
+```
+```{r}
+print(emissions[1,])
+```
+
+
